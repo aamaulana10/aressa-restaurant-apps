@@ -1,7 +1,8 @@
 import '../styles/main.css';
 import '../styles/responsive.css';
 import '../styles/animation.css';
-import DATA from '../public/data/DATA.json';
+import restaurantData from '../public/data/restaurants.json';
+import featureData from '../public/data/features.json';
 
 const setupRestaurant = () => {
     const restaurantList = document.querySelector('.restaurant-list');
@@ -12,7 +13,7 @@ const setupRestaurant = () => {
             const restaurantElement = template.content.cloneNode(true);
 
             const article = restaurantElement.querySelector('.restaurant-card');
-            article.setAttribute('tabindex', '0');
+            article.setAttribute('tabindex', index);
             article.setAttribute('aria-label', `Restaurant ${restaurant.name}`);
 
             const thumbnail = restaurantElement.querySelector('.restaurant-item__thumbnail');
@@ -35,7 +36,32 @@ const setupRestaurant = () => {
         });
     };
 
-    populateRestaurants(DATA.restaurants);
+    populateRestaurants(restaurantData.restaurants);
+};
+
+const setupFeatures = () => {
+    const featureList = document.querySelector('.features__grid');
+    const template = document.querySelector('#feature-template');
+
+    const populateFeatures = (features) => {
+        features.forEach((feature, _) => {
+            const featureElement = template.content.cloneNode(true);
+
+            const article = featureElement.querySelector('.feature-card');
+            article.setAttribute('tabindex', '0');
+            article.setAttribute('aria-label', feature.title);
+
+            const title = featureElement.querySelector('.feature-title');
+            title.textContent = feature.title;
+
+            const description = featureElement.querySelector('.feature-description');
+            description.textContent = feature.description;
+
+            featureList.appendChild(featureElement);
+        });
+    };
+
+    populateFeatures(featureData.features);
 };
 
 const setupNavbarMenu = () => {
@@ -104,6 +130,7 @@ const setupScrollAnimation = () => {
 window.addEventListener('DOMContentLoaded', () => {
     setupNavbarMenu();
     setupRestaurant();
+    setupFeatures();
     setupNewsletter();
     setupScrollAnimation();
 });

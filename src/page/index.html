@@ -5,8 +5,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Aressa Restaurant</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 
 <body>
@@ -53,21 +51,12 @@
     <section class="features">
       <h2 class="features__title">Why Choose Us</h2>
       <div class="features__grid">
-        <div class="feature-card">
-          <i class="fas fa-utensils"></i>
-          <h3>Quality Dining</h3>
-          <p>Carefully selected restaurants that meet our high standards</p>
-        </div>
-        <div class="feature-card">
-          <i class="fas fa-star"></i>
-          <h3>Verified Reviews</h3>
-          <p>Honest feedback from real diners</p>
-        </div>
-        <div class="feature-card">
-          <i class="fas fa-map-marker-alt"></i>
-          <h3>Local Favorites</h3>
-          <p>Discover the best restaurants in your area</p>
-        </div>
+        <template id="feature-template">
+          <article class="feature-card">
+            <h3 class="feature-title">Quality Dining</h3>
+            <p class="feature-description">Carefully selected restaurants that meet our high standards</p>
+          </article>
+        </template>
       </div>
     </section>
     <section class="newsletter">
