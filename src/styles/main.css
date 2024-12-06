@@ -329,7 +329,8 @@ main {
 
 .newsletter__input {
   width: 100%;
-  padding: 12px;
+  min-height: 44px;
+  padding: 8px;
   border: none;
   border-radius: 4px;
   margin-bottom: 15px;
@@ -339,7 +340,8 @@ main {
   background-color: var(--secondary-color);
   color: var(--text-light);
   border: none;
-  padding: 12px 30px;
+  padding: 0 30px;
+  min-height: 44px;
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.3s ease;
@@ -360,7 +362,7 @@ main {
   padding: 8px;
   background-color: #bf1722;
   color: white;
-  z-index: 100;
+  z-index: 1100;
 }
 
 .skip-link:focus {

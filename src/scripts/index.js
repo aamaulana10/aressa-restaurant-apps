@@ -14,10 +14,6 @@ const setupRestaurant = () => {
         restaurants.forEach((restaurant, index) => {
             const restaurantElement = template.content.cloneNode(true);
 
-            const article = restaurantElement.querySelector('.restaurant-card');
-            article.setAttribute('tabindex', menuLength + 1 + index);
-            article.setAttribute('aria-label', `Restaurant ${restaurant.name}`);
-
             const thumbnail = restaurantElement.querySelector('.restaurant-item__thumbnail');
             thumbnail.src = restaurant.pictureId;
             thumbnail.alt = `Restaurant ${restaurant.name}`;
@@ -48,10 +44,6 @@ const setupFeatures = () => {
     const populateFeatures = (features) => {
         features.forEach((feature, index) => {
             const featureElement = template.content.cloneNode(true);
-
-            const article = featureElement.querySelector('.feature-card');
-            article.setAttribute('tabindex', menuLength + restaurantData.restaurants.length + 1 + index);
-            article.setAttribute('aria-label', feature.title);
 
             const title = featureElement.querySelector('.feature-content__title');
             title.textContent = feature.title;
