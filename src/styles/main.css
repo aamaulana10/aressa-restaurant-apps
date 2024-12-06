@@ -73,6 +73,7 @@ body {
   color: var(--text-light);
   margin-left: auto;
   color: #ffffff;
+  text-decoration: none;
 }
 
 /*
