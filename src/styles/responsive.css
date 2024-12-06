@@ -1,11 +1,72 @@
-@media screen and (min-width: 650px) {
-    .restaurant-list {
-      grid-template-columns: repeat(2, 1fr);
-    }
+@media screen and (max-width: 768px) {
+  .header__inner {
+    padding: 16px;
+    display: flex;
   }
-  
-  @media screen and (min-width: 900px) {
-    .restaurant-list {
-      grid-template-columns: repeat(3, 1fr);
-    }
+
+  .header__menu {
+    display: flex;
+  }
+
+  .nav {
+    position: fixed;
+    background-color: var(--primary-color);
+    width: 300px;
+    height: 300px;
+    left: -300px;
+    top: 56px;
+    padding: 16px;
+    transition: left 0.3s ease-in-out;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  }
+
+  .nav.open {
+    left: 0;
+  }
+
+  .nav__list {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .nav__item {
+    width: 100%;
+    margin: 8px 0;
+    text-align: left;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .nav__item:last-child {
+    border-bottom: none;
+  }
+
+  .nav__item a {
+    padding: 16px;
+    display: block;
+    width: 100%;
+  }
+
+  .restaurant-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media screen and (min-width: 769px) {
+  .header__menu {
+    display: none;
+  }
+
+  .nav {
+    display: flex;
+  }
+
+  .restaurant-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .restaurant-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }

@@ -3,34 +3,37 @@
 
 <head>
   <meta charset="UTF-8" />
-  <title>Restaurant Apps</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aressa Restaurant</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 
 <body>
+  <a href="#mainContent" class="skip-link">Skip to Content</a>
   <header class="header">
     <div class="header__inner">
-      <h1 class="header__title">Restaurant Apps</h1>
-      <a id="menu" class="header__menu">☰</a>
+      <h1 class="header__title">Aressa Restaurant</h1>
       <nav id="drawer" class="nav">
         <ul class="nav__list">
-          <li class="nav__item"><a href="#">Home</a></li>
-          <li class="nav__item"><a href="#">Favorite</a></li>
-          <li class="nav__item"><a href="#">About Us</a></li>
+          <li class="nav__item"><a href="/" tabindex="1">Home</a></li>
+          <li class="nav__item"><a href="#" tabindex="2">Favorite</a></li>
+          <li class="nav__item"><a href="https://github.com/aamaulana10" tabindex="3">About Us</a></li>
         </ul>
       </nav>
+      <a id="menu" class="header__menu">☰</a>
     </div>
   </header>
   <div class="hero">
     <div class="hero__inner">
-      <h1 class="hero__title">Yu makan</h1>
+      <h1 class="hero__title">Discover Amazing Restaurants</h1>
       <p class="hero__tagline">
-        Di restoran gavin
+        Find the perfect dining experience for any occasion
       </p>
     </div>
   </div>
   <main>
-    <section class="content">
-      <h2 class="content__title">Explore Restaurant</h2>
+    <section class="content" id="mainContent">
       <div class="restaurant-list">
         <template id="restaurant-template">
           <article class="restaurant-card">
@@ -47,9 +50,39 @@
         </template>
       </div>
     </section>
+    <section class="features">
+      <h2 class="features__title">Why Choose Us</h2>
+      <div class="features__grid">
+        <div class="feature-card">
+          <i class="fas fa-utensils"></i>
+          <h3>Quality Dining</h3>
+          <p>Carefully selected restaurants that meet our high standards</p>
+        </div>
+        <div class="feature-card">
+          <i class="fas fa-star"></i>
+          <h3>Verified Reviews</h3>
+          <p>Honest feedback from real diners</p>
+        </div>
+        <div class="feature-card">
+          <i class="fas fa-map-marker-alt"></i>
+          <h3>Local Favorites</h3>
+          <p>Discover the best restaurants in your area</p>
+        </div>
+      </div>
+    </section>
+    <section class="newsletter">
+      <h2>Stay Updated</h2>
+      <p>Subscribe to our newsletter for the latest restaurant updates and exclusive offers</p>
+      <form class="newsletter__form">
+        <input type="email" class="newsletter__input" placeholder="Enter your email" required>
+        <button type="submit" class="newsletter__button">Subscribe</button>
+      </form>
+    </section>
   </main>
   <footer>
-    <p>Copyright © 2024 - Restaurant Apps</p>
+    <div class="footer__content">
+      <p>Copyright © 2024 - Restaurant Apps</p>
+    </div>
   </footer>
 </body>
 
