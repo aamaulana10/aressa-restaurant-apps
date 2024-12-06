@@ -4,6 +4,8 @@ import '../styles/animation.css';
 import restaurantData from '../public/data/restaurants.json';
 import featureData from '../public/data/features.json';
 
+const menuLength = 3;
+
 const setupRestaurant = () => {
     const restaurantList = document.querySelector('.restaurant-list');
     const template = document.querySelector('#restaurant-template');
@@ -13,7 +15,7 @@ const setupRestaurant = () => {
             const restaurantElement = template.content.cloneNode(true);
 
             const article = restaurantElement.querySelector('.restaurant-card');
-            article.setAttribute('tabindex', index);
+            article.setAttribute('tabindex', menuLength + 1 + index);
             article.setAttribute('aria-label', `Restaurant ${restaurant.name}`);
 
             const thumbnail = restaurantElement.querySelector('.restaurant-item__thumbnail');
@@ -44,17 +46,17 @@ const setupFeatures = () => {
     const template = document.querySelector('#feature-template');
 
     const populateFeatures = (features) => {
-        features.forEach((feature, _) => {
+        features.forEach((feature, index) => {
             const featureElement = template.content.cloneNode(true);
 
             const article = featureElement.querySelector('.feature-card');
-            article.setAttribute('tabindex', '0');
+            article.setAttribute('tabindex', menuLength + restaurantData.restaurants.length + 1 + index);
             article.setAttribute('aria-label', feature.title);
 
-            const title = featureElement.querySelector('.feature-title');
+            const title = featureElement.querySelector('.feature-content__title');
             title.textContent = feature.title;
 
-            const description = featureElement.querySelector('.feature-description');
+            const description = featureElement.querySelector('.feature-content__description');
             description.textContent = feature.description;
 
             featureList.appendChild(featureElement);
@@ -70,18 +72,9 @@ const setupNavbarMenu = () => {
     const menu = document.querySelector('#menu');
     const drawer = document.querySelector('#drawer');
 
-    menu.setAttribute('aria-label', 'navigation menu');
-    menu.setAttribute('tabindex', '0');
-
     menu.addEventListener('click', function (event) {
         drawer.classList.toggle('open');
         event.stopPropagation();
-    });
-
-    menu.addEventListener('keypress', function (event) {
-        if (event.key === 'Enter') {
-            drawer.classList.toggle('open');
-        }
     });
 
     main.addEventListener('click', function () {
@@ -99,6 +92,7 @@ const setupNewsletter = () => {
         form.addEventListener('submit', (e) => {
             e.preventDefault();
             const email = form.querySelector('input[type="email"]').value;
+            // just dummy alert
             alert(`Thank you for subscribing with: ${email}`);
             form.reset();
         });

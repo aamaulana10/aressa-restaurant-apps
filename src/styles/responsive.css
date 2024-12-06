@@ -49,6 +49,10 @@
   .restaurant-list {
     grid-template-columns: 1fr;
   }
+
+  .features__grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media screen and (min-width: 769px) {
@@ -62,6 +66,14 @@
 
   .restaurant-list {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .restaurant-item__title {
+    font-size: 18px;
+  }
+
+  .restaurant-item__description {
+    font-size: 14px;
   }
 }
 
