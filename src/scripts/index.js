@@ -4,8 +4,6 @@ import '../styles/animation.css';
 import restaurantData from '../public/data/restaurants.json';
 import featureData from '../public/data/features.json';
 
-const menuLength = 3;
-
 const setupRestaurant = () => {
     const restaurantList = document.querySelector('.restaurant-list');
     const template = document.querySelector('#restaurant-template');
