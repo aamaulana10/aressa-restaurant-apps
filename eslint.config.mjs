@@ -8,5 +8,13 @@ export default [
   { files: ["**/*.js"], languageOptions: { sourceType: "script" } },
   { languageOptions: { globals: globals.browser } },
   pluginJs.configs.recommended,
-  daStyle
+  daStyle,
+
+  {
+    rules: {
+      'space-infix-ops': ['error'],
+      'brace-style': ['error', '1tbs'],
+      'space-before-blocks': ['error', 'always'],
+    },
+  },
 ];
