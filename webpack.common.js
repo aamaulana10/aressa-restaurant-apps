@@ -1,7 +1,6 @@
-const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const path = require('path');
 
 module.exports = {
   entry: {
@@ -25,18 +24,12 @@ module.exports = {
           },
         ],
       },
-      {
-        test: /\.(png|svg|jpg|jpeg|gif)$/i,
-        type: 'asset/resource',
-      },
     ],
   },
   plugins: [
-    new CleanWebpackPlugin(),
-
     new HtmlWebpackPlugin({
       filename: 'index.html',
-      template: path.resolve(__dirname, 'src/page/index.html'),
+      template: path.resolve(__dirname, 'src/templates/index.html'),
     }),
     new CopyWebpackPlugin({
       patterns: [

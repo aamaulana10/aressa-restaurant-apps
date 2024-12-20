@@ -3,6 +3,7 @@ import '../styles/responsive.css';
 import '../styles/animation.css';
 import restaurantData from '../public/data/restaurants.json';
 import featureData from '../public/data/features.json';
+import App from './views/app';
 
 const setupRestaurant = () => {
     const restaurantList = document.querySelector('.restaurant-list');
@@ -56,25 +57,25 @@ const setupFeatures = () => {
     populateFeatures(featureData.features);
 };
 
-const setupNavbarMenu = () => {
-    const main = document.querySelector('main');
-    const hero = document.querySelector('.hero');
-    const menu = document.querySelector('#menu');
-    const drawer = document.querySelector('#drawer');
+// const setupNavbarMenu = () => {
+//     const main = document.querySelector('main');
+//     const hero = document.querySelector('.hero');
+//     const menu = document.querySelector('#menu');
+//     const drawer = document.querySelector('#drawer');
 
-    menu.addEventListener('click', function (event) {
-        drawer.classList.toggle('open');
-        event.stopPropagation();
-    });
+//     menu.addEventListener('click', function (event) {
+//         drawer.classList.toggle('open');
+//         event.stopPropagation();
+//     });
 
-    main.addEventListener('click', function () {
-        drawer.classList.remove('open');
-    });
+//     main.addEventListener('click', function () {
+//         drawer.classList.remove('open');
+//     });
 
-    hero.addEventListener('click', function () {
-        drawer.classList.remove('open');
-    });
-}
+//     hero.addEventListener('click', function () {
+//         drawer.classList.remove('open');
+//     });
+// }
 
 const setupNewsletter = () => {
     const form = document.querySelector('.newsletter__form');
@@ -112,11 +113,24 @@ const setupScrollAnimation = () => {
 };
 
 window.addEventListener('DOMContentLoaded', () => {
-    setupNavbarMenu();
+    // setupNavbarMenu();
     setupRestaurant();
     setupFeatures();
     setupNewsletter();
     setupScrollAnimation();
 });
 
+const app = new App({
+    button: document.querySelector('#menu'),
+    drawer: document.querySelector('#drawer'),
+    content: document.querySelector('#mainContent'),
+});
+
+window.addEventListener('hashchange', () => {
+    app.renderPage();
+});
+
+window.addEventListener('load', () => {
+    app.renderPage();
+});
 
