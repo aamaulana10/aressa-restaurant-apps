@@ -2,27 +2,8 @@ import '../styles/main.css';
 import '../styles/responsive.css';
 import '../styles/animation.css';
 import App from './views/app';
+import swRegister from './utils/sw-register';
 
-
-// const setupNavbarMenu = () => {
-//     const main = document.querySelector('main');
-//     const hero = document.querySelector('.hero');
-//     const menu = document.querySelector('#menu');
-//     const drawer = document.querySelector('#drawer');
-
-//     menu.addEventListener('click', function (event) {
-//         drawer.classList.toggle('open');
-//         event.stopPropagation();
-//     });
-
-//     main.addEventListener('click', function () {
-//         drawer.classList.remove('open');
-//     });
-
-//     hero.addEventListener('click', function () {
-//         drawer.classList.remove('open');
-//     });
-// }
 
 const setupNewsletter = () => {
     const form = document.querySelector('.newsletter__form');
@@ -79,5 +60,6 @@ window.addEventListener('hashchange', () => {
 
 window.addEventListener('load', () => {
     app.renderPage();
+    swRegister();
 });
 
