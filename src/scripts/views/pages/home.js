@@ -8,25 +8,12 @@ const Home = {
             <div>
                 <section class="content">
                 <div>
-                <h2>Our special restourant</h2>
+                <h2 class="content__title">Our Healty Partner</h2>
                 ${createLoadingTemplate()}
                 <div id="mainError"></div>
                  <div class="restaurant-list">
                  </div>
                  </div>
-                </section>
-                <section class="features">
-                 <h2 class="features__title">Why Choose Us</h2>
-                 <div class="features__grid">
-                 </div>
-                </section>
-                <section class="newsletter">
-                 <h2>Stay Updated</h2>
-                 <p>Subscribe to our newsletter for the latest restaurant updates and exclusive offers</p>
-                 <form class="newsletter__form">
-                    <input type="email" class="newsletter__input" placeholder="Enter your email" required>
-                    <button type="submit" class="newsletter__button">Subscribe</button>
-                </form>
                 </section>
             </div>
         `;
@@ -43,8 +30,6 @@ const Home = {
         loadingElement.style.display = 'flex';
         restaurantsContainer.style.display = 'none';
         errorContainer.style.display = 'none';
-
-        this.setupFeature();
 
         setTimeout(async () => {
 
@@ -100,16 +85,6 @@ const Home = {
             }
         }, 2000);
     },
-
-    async setupFeature() {
-        const features = await FeaturesSource.getListFeatures()
-        console.log('FEATURES ', features);
-
-        const featuresContainer = document.querySelector('.features__grid');
-        features.forEach((feature) => {
-            featuresContainer.innerHTML += createFeaturesItemTemplate(feature);
-        });
-    }
 }
 
 export default Home;
