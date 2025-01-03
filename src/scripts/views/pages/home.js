@@ -7,9 +7,12 @@ const Home = {
         return `
             <div>
                 <section class="content">
+                <div>
+                <h2>Our special restourant</h2>
                 ${createLoadingTemplate()}
                 <div id="mainError"></div>
                  <div class="restaurant-list">
+                 </div>
                  </div>
                 </section>
                 <section class="features">

@@ -47,11 +47,12 @@ body {
 }
 
 .header__inner {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 24px;
-  display: flex;
-  justify-content: space-between;
+  max-width: 100%;
+  margin: 0;
+  padding: 0 16px;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  /* justify-content: space-between; */
   align-items: center;
 }
 
@@ -59,10 +60,6 @@ body {
   color: var(--brand-color);
   font-size: 24px;
   width: 100%;
-  display: grid;
-  grid-template-columns: 3fr 2fr;
-  align-items: center;
-  gap: 8px;
   transition: color 0.3s ease-in-out;
 }
 
@@ -119,13 +116,7 @@ body {
 }
 
 .nav__item {
-  margin: 0 10px;
-  padding: 0;
-  transition: color 0.3s ease-in-out;
-}
-
-.nav__item {
-  min-width: 44px;
+  min-width: 100px;
   min-height: 44px;
   display: inline-flex;
   align-items: center;
@@ -133,6 +124,7 @@ body {
   text-decoration: none;
   color: var(--text-dark2);
   font-weight: 600;
+  transition: color 0.3s ease-in-out;
 }
 
 .nav__item:hover {
@@ -147,6 +139,7 @@ body {
   border-radius: 8px;
   text-decoration: none;
   font-weight: 500;
+  min-width: 160px;
   transition: all 0.3s ease-in-out;
 }
 
@@ -182,15 +175,14 @@ main {
  */
 
 .hero {
-  margin-top: 80px;
   min-height: 80vh;
   background: none;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 48px;
   padding: 48px;
-  max-width: 1200px;
-  margin: 80px auto 0;
+  max-width: 100%;
+  margin: 100px auto 0;
   align-items: center;
   background: rgb(255, 255, 255);
 
@@ -329,10 +321,9 @@ main {
 }
 
 .restaurant-item__rating {
-  color: #ff9800;
+  background-color: var(--brand-color);
   font-weight: 500;
   margin-bottom: 8px;
-  background-color: var(--secondary-color);
   color: var(--text-light);
   padding: 4px 8px;
   border-radius: 4px;
@@ -351,10 +342,13 @@ main {
   color: #666;
   font-size: 12px;
   line-height: 1.5;
-  overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
   line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
 }
 
@@ -711,4 +705,23 @@ footer p {
 
 .review-header small {
   color: #666;
+}
+
+.read-more {
+  display: inline-block;
+  background: none;
+  border: none;
+  color: #4CAF50;
+  cursor: pointer;
+  padding: 8px 0px;
+  margin-top: 8px;
+  font-weight: 500;
+  height: 44px;
+  min-height: 44px;
+  transition: all 0.3s ease;
+}
+
+.read-more:hover {
+  color: #45a049;
+  transform: translateY(-2px);
 }

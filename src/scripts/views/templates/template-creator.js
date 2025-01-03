@@ -10,6 +10,7 @@ const createRestaurantItemTemplate = (restaurant) => `
             <p class="restaurant-item__rating">${restaurant.rating}</p>
             <h1 class="restaurant-item__title">${restaurant.name}</h1>
             <p class="restaurant-item__description">${restaurant.description}</p>
+            <button class="read-more">Read More</button>
         </div>
      </a>
     </div>
