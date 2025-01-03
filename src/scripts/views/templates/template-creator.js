@@ -36,4 +36,27 @@ const createLikedButtonTemplate = () => `
   </button>
 `;
 
-export { createRestaurantItemTemplate, createFeaturesItemTemplate, createLikeButtonTemplate, createLikedButtonTemplate };
+const createLoadingTemplate = () => `
+  <div id="loading" class="loading-container">
+    <div class="loading-spinner"></div>
+  </div>
+`;
+
+const createErrorTemplate = (message = 'Something went wrong', withRetry = true) => `
+  <div id="mainError" class="error-container">
+    <div class="error-content">
+      <div class="error-icon">
+        <i class="fa fa-exclamation-circle"></i>
+      </div>
+      <h3 class="error-title">Oops!</h3>
+      <p class="error-message">${message}</p>
+      ${withRetry ? `
+        <button class="error-retry" onclick="window.location.reload()">
+          <i class="fa fa-refresh"></i> Try Again
+        </button>
+      ` : ''}
+    </div>
+  </div>
+`;
+
+export { createRestaurantItemTemplate, createFeaturesItemTemplate, createLikeButtonTemplate, createLikedButtonTemplate, createLoadingTemplate, createErrorTemplate };

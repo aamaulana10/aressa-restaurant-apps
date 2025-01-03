@@ -50,6 +50,18 @@ window.addEventListener('DOMContentLoaded', () => {
     // setupScrollAnimation();
 });
 
+const setupHeaderScroll = () => {
+    const header = document.querySelector('.header');
+
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+    });
+};
+
 const app = new App({
     button: document.querySelector('#menu'),
     drawer: document.querySelector('#drawer'),
@@ -62,7 +74,8 @@ window.addEventListener('hashchange', () => {
 
 window.addEventListener('load', () => {
     app.renderPage();
-    swRegister();
+    setupHeaderScroll();
+    // swRegister();
     WebSocketInitiator.init(CONFIG.WEB_SOCKET_SERVER);
 });
 

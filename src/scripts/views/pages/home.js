@@ -1,12 +1,14 @@
 import FeaturesSource from "../../data/features-source";
 import RestaurantSource from "../../data/restaurants-source";
-import { createRestaurantItemTemplate, createFeaturesItemTemplate } from "../templates/template-creator";
+import { createRestaurantItemTemplate, createFeaturesItemTemplate, createErrorTemplate, createLoadingTemplate } from "../templates/template-creator";
 
 const Home = {
     async render() {
         return `
             <div>
                 <section class="content">
+                ${createLoadingTemplate()}
+                <div id="mainError"></div>
                  <div class="restaurant-list">
                  </div>
                 </section>
@@ -29,15 +31,71 @@ const Home = {
 
 
     async afterRender() {
-        const restaurants = await RestaurantSource.getList();
-        console.log('RESTAURANT ', restaurants);
 
+        const loadingElement = document.querySelector('#loading');
         const restaurantsContainer = document.querySelector('.restaurant-list');
-        restaurants.forEach((restaurant) => {
-            restaurantsContainer.innerHTML += createRestaurantItemTemplate(restaurant);
-        });
+        const errorContainer = document.querySelector('#mainError');
 
-        this.setupFeature();
+        // Show loading
+        loadingElement.style.display = 'flex';
+        restaurantsContainer.style.display = 'none';
+        errorContainer.style.display = 'none';
+
+        setTimeout(async () => {
+
+            try {
+
+                const restaurants = await RestaurantSource.getAllRestaurants();
+                console.log('RESTAURANT ', restaurants);
+
+                loadingElement.style.display = 'none';
+
+                if (restaurants.error) {
+                    restaurantsContainer.style.display = 'none';
+                    errorContainer.style.display = 'block';
+                    errorContainer.innerHTML = createErrorTemplate(
+                        'Failed to load restaurants. Please check your connection and try again.',
+                        true
+                    );
+                    return;
+                }
+
+                if (!restaurants.length) {
+                    restaurantsContainer.style.display = 'none';
+                    errorContainer.style.display = 'block';
+                    errorContainer.innerHTML = createErrorTemplate(
+                        'No restaurants found.',
+                        false
+                    );
+                    return;
+                }
+
+                errorContainer.style.display = 'none';
+                restaurantsContainer.style.display = 'grid';
+
+                restaurants.forEach((restaurant) => {
+                    restaurantsContainer.innerHTML += createRestaurantItemTemplate(restaurant);
+                });
+
+                this.setupFeature();
+
+            } catch (error) {
+                loadingElement.style.display = 'none';
+                restaurantsContainer.style.display = 'none';
+                errorContainer.style.display = 'block';
+                if (!navigator.onLine) {
+                    errorContainer.innerHTML = createErrorTemplate(
+                        'You are offline. Please check your internet connection.',
+                        true
+                    );
+                } else {
+                    errorContainer.innerHTML = createErrorTemplate(
+                        'Something went wrong while loading the restaurants.',
+                        true
+                    );
+                }
+            }
+        }, 5000);
     },
 
     async setupFeature() {

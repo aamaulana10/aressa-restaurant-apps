@@ -1,58 +1,105 @@
 @media screen and (max-width: 768px) {
-  .header__inner {
-    padding: 16px;
-    display: flex;
-  }
-
   .header__menu {
     display: flex;
   }
 
+  /*
+ * Scrolled header style
+ */
+
+  .header.scrolled {
+    background: #4CAF50;
+  }
+
+  .header.scrolled .header__title,
+  .header.scrolled .nav__item {
+    color: var(--text-dark2);
+  }
+
+  .header.scrolled .booking-button {
+    background-color: #4CAF50;
+    color: white;
+  }
+
+  .header.scrolled .header__menu {
+    color: white;
+  }
+
+  .header.scrolled .header__title {
+    color: white;
+  }
+
   .nav {
-    position: fixed;
-    background-color: var(--primary-color);
+    z-index: 10;
+    background-color: white;
     width: 300px;
-    height: 300px;
-    left: -300px;
-    top: 56px;
+    position: absolute;
+    left: 0;
+    -webkit-transform: translate(-300px, 0);
+    transform: translate(-300px, 0);
+    transition: transform 0.3s ease-in-out;
+    height: 380px;
     padding: 16px;
-    transition: left 0.3s ease-in-out;
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
   }
 
   .nav.open {
-    left: 0;
+    -webkit-transform: translate(0, 0);
+    transform: translate(0, 0);
   }
 
   .nav__list {
+    display: flex;
     flex-direction: column;
-    width: 100%;
+    padding-top: 120px;
+    gap: 0;
   }
 
   .nav__item {
     width: 100%;
-    margin: 8px 0;
     text-align: left;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  }
-
-  .nav__item:last-child {
-    border-bottom: none;
   }
 
   .nav__item a {
-    padding: 16px;
-    display: block;
     width: 100%;
+    padding: 16px 24px;
+    display: block;
   }
 
-  .restaurant-list {
+  .hero {
     grid-template-columns: 1fr;
+    padding: 24px;
+    text-align: center;
   }
 
-  .features__grid {
-    grid-template-columns: 1fr;
+  .hero__inner {
+    text-align: center;
+    order: 2;
+    animation-delay: 0.2s;
   }
+
+  .hero__image {
+    order: 1;
+    animation-delay: 0.3s;
+  }
+
+  .hero__image img {
+    border-radius: 4%;
+  }
+
+  .hero__title {
+    font-size: 32px;
+    animation-delay: 0.3s;
+  }
+
+  .hero__tagline {
+    font-size: 16px;
+    animation-delay: 0.4s;
+  }
+
+  .get-started-button {
+    animation-delay: 0.5s;
+  }
+
 }
 
 @media screen and (min-width: 769px) {
