@@ -7,48 +7,7 @@ import WebSocketInitiator from './utils/websocket-initiator';
 import CONFIG from './globals/config';
 
 
-const setupNewsletter = () => {
-    const form = document.querySelector('.newsletter__form');
-    if (form) {
-        form.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const email = form.querySelector('input[type="email"]').value;
-            // just dummy alert
-            alert(`Thank you for subscribing with: ${email}`);
-            form.reset();
-        });
-    }
-};
-
-const setupScrollAnimation = () => {
-    const cards = document.querySelectorAll('.restaurant-card');
-    const observer = new IntersectionObserver(
-        (entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        },
-        { threshold: 0.1 }
-    );
-
-    cards.forEach(card => {
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(20px)';
-        card.style.transition = 'all 0.5s ease-out';
-        observer.observe(card);
-    });
-};
-
-window.addEventListener('DOMContentLoaded', () => {
-    // setupNavbarMenu();
-    // setupRestaurant();
-    // setupFeatures();
-    // setupNewsletter();
-    // setupScrollAnimation();
-});
+let prevPage = null;
 
 const setupHeaderScroll = () => {
     const header = document.querySelector('.header');
@@ -68,12 +27,15 @@ const app = new App({
     content: document.querySelector('#mainContent'),
 });
 
-window.addEventListener('hashchange', () => {
-    app.renderPage();
+window.addEventListener('hashchange', async () => {
+    if (prevPage && prevPage.beforeLeave) {
+        await prevPage.beforeLeave();
+      }
+      prevPage = await app.renderPage();
 });
 
-window.addEventListener('load', () => {
-    app.renderPage();
+window.addEventListener('load', async() => {
+    prevPage = await app.renderPage();
     setupHeaderScroll();
     // swRegister();
     WebSocketInitiator.init(CONFIG.WEB_SOCKET_SERVER);

@@ -100,6 +100,18 @@
     animation-delay: 0.5s;
   }
 
+  .restaurant-detail__menus {
+    grid-template-columns: 1fr;
+  }
+
+  .restaurant-detail__image {
+    height: 300px;
+  }
+
+  .restaurant-detail__title {
+    font-size: 28px;
+  }
+
 }
 
 @media screen and (min-width: 769px) {

@@ -41,6 +41,8 @@ const Home = {
         restaurantsContainer.style.display = 'none';
         errorContainer.style.display = 'none';
 
+        this.setupFeature();
+
         setTimeout(async () => {
 
             try {
@@ -77,8 +79,6 @@ const Home = {
                     restaurantsContainer.innerHTML += createRestaurantItemTemplate(restaurant);
                 });
 
-                this.setupFeature();
-
             } catch (error) {
                 loadingElement.style.display = 'none';
                 restaurantsContainer.style.display = 'none';
@@ -95,7 +95,7 @@ const Home = {
                     );
                 }
             }
-        }, 5000);
+        }, 2000);
     },
 
     async setupFeature() {
