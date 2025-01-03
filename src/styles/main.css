@@ -604,22 +604,6 @@ main {
   border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* Responsive Styles */
-@media screen and (max-width: 768px) {
-  .features-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .newsletter-form {
-    flex-direction: column;
-  }
-
-  .footer-content {
-    grid-template-columns: 1fr;
-    gap: 40px;
-  }
-}
-
 /* 
   Loading styles
  */
@@ -845,6 +829,10 @@ main {
   color: #45a049;
   transform: translateY(-2px);
 }
+
+/*
+ * Favorite
+ */
 
 .favorite__wrapper {
   margin-top: 100px;

@@ -32,13 +32,13 @@
   .nav {
     z-index: 10;
     background-color: white;
-    width: 300px;
+    width: 200px;
     position: absolute;
     left: 0;
     -webkit-transform: translate(-300px, 0);
     transform: translate(-300px, 0);
     transition: transform 0.3s ease-in-out;
-    height: 380px;
+    height: 400px;
     padding: 16px;
   }
 
@@ -110,6 +110,19 @@
 
   .restaurant-detail__title {
     font-size: 28px;
+  }
+
+  .features-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .newsletter-form {
+    flex-direction: column;
+  }
+
+  .footer-content {
+    grid-template-columns: 1fr;
+    gap: 40px;
   }
 
 }

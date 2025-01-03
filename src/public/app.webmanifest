@@ -1,9 +1,9 @@
 {
-    "id": "restaurant-catalogue-lite-pwa-1",
+    "id": "aressa-resto-pwa",
     "start_url": "./index.html",
-    "name": "Restaurant Catalogue Lite",
-    "short_name": "Restaurant Lite",
-    "description": "Free Catalogue Restaurant for you",
+    "name": "Aressa D'Resto",
+    "short_name": "D'Resto",
+    "description": "Discover Healthy Dining",
     "display": "standalone",
     "background_color": "#FFFFFF",
     "theme_color": "#D84315",

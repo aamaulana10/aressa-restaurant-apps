@@ -1,10 +1,9 @@
-import FeaturesSource from "../../data/features-source";
-import RestaurantSource from "../../data/restaurants-source";
-import { createRestaurantItemTemplate, createFeaturesItemTemplate, createErrorTemplate, createLoadingTemplate } from "../templates/template-creator";
+import RestaurantSource from '../../data/restaurants-source';
+import { createRestaurantItemTemplate, createErrorTemplate, createLoadingTemplate } from '../templates/template-creator';
 
 const Home = {
-    async render() {
-        return `
+  async render() {
+    return `
             <div>
                 <section class="content">
                 <div>
@@ -17,74 +16,75 @@ const Home = {
                 </section>
             </div>
         `;
-    },
+  },
 
 
-    async afterRender() {
+  async afterRender() {
 
-        const loadingElement = document.querySelector('#loading');
-        const restaurantsContainer = document.querySelector('.restaurant-list');
-        const errorContainer = document.querySelector('#mainError');
+    const loadingElement = document.querySelector('#loading');
+    const restaurantsContainer = document.querySelector('.restaurant-list');
+    const errorContainer = document.querySelector('#mainError');
 
-        // Show loading
-        loadingElement.style.display = 'flex';
-        restaurantsContainer.style.display = 'none';
+    // Show loading
+    loadingElement.style.display = 'flex';
+    restaurantsContainer.style.display = 'none';
+    errorContainer.style.display = 'none';
+
+    setTimeout(async () => {
+
+      try {
+
+        const restaurants = await RestaurantSource.getAllRestaurants();
+        console.log('RESTAURANT ', restaurants);
+
+        loadingElement.style.display = 'none';
+
+        if (restaurants.error) {
+          restaurantsContainer.style.display = 'none';
+          errorContainer.style.display = 'block';
+          errorContainer.innerHTML = createErrorTemplate(
+            'Failed to load restaurants. Please check your connection and try again.',
+            true
+          );
+          return;
+        }
+
+        if (!restaurants.length) {
+          restaurantsContainer.style.display = 'none';
+          errorContainer.style.display = 'block';
+          errorContainer.innerHTML = createErrorTemplate(
+            'No restaurants found.',
+            false
+          );
+          return;
+        }
+
         errorContainer.style.display = 'none';
+        restaurantsContainer.style.display = 'grid';
 
-        setTimeout(async () => {
+        restaurants.forEach((restaurant) => {
+          restaurantsContainer.innerHTML += createRestaurantItemTemplate(restaurant);
+        });
 
-            try {
-
-                const restaurants = await RestaurantSource.getAllRestaurants();
-                console.log('RESTAURANT ', restaurants);
-
-                loadingElement.style.display = 'none';
-
-                if (restaurants.error) {
-                    restaurantsContainer.style.display = 'none';
-                    errorContainer.style.display = 'block';
-                    errorContainer.innerHTML = createErrorTemplate(
-                        'Failed to load restaurants. Please check your connection and try again.',
-                        true
-                    );
-                    return;
-                }
-
-                if (!restaurants.length) {
-                    restaurantsContainer.style.display = 'none';
-                    errorContainer.style.display = 'block';
-                    errorContainer.innerHTML = createErrorTemplate(
-                        'No restaurants found.',
-                        false
-                    );
-                    return;
-                }
-
-                errorContainer.style.display = 'none';
-                restaurantsContainer.style.display = 'grid';
-
-                restaurants.forEach((restaurant) => {
-                    restaurantsContainer.innerHTML += createRestaurantItemTemplate(restaurant);
-                });
-
-            } catch (error) {
-                loadingElement.style.display = 'none';
-                restaurantsContainer.style.display = 'none';
-                errorContainer.style.display = 'block';
-                if (!navigator.onLine) {
-                    errorContainer.innerHTML = createErrorTemplate(
-                        'You are offline. Please check your internet connection.',
-                        true
-                    );
-                } else {
-                    errorContainer.innerHTML = createErrorTemplate(
-                        'Something went wrong while loading the restaurants.',
-                        true
-                    );
-                }
-            }
-        }, 2000);
-    },
-}
+      } catch (error) {
+        loadingElement.style.display = 'none';
+        restaurantsContainer.style.display = 'none';
+        errorContainer.style.display = 'block';
+        console.log(error);
+        if (!navigator.onLine) {
+          errorContainer.innerHTML = createErrorTemplate(
+            'You are offline. Please check your internet connection.',
+            true
+          );
+        } else {
+          errorContainer.innerHTML = createErrorTemplate(
+            'Something went wrong while loading the restaurants.',
+            true
+          );
+        }
+      }
+    }, 2000);
+  },
+};
 
 export default Home;
