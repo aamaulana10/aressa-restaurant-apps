@@ -23,6 +23,12 @@ class App {
     const url = UrlParser.parseActiveUrlWithCombiner();
     const page = routes[url];
     this._content.innerHTML = await page.render();
+    const skipLink = document.querySelector('.skip-link');
+    const mainContent = document.querySelector('#mainContent');
+    skipLink.addEventListener('click', (event) => {
+      event.preventDefault();
+      mainContent.focus();
+    });
     await page.afterRender();
     return page;
   }
