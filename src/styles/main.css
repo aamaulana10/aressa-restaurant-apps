@@ -670,7 +670,10 @@ main {
 }
 
 .error-retry {
+  display: inline-flex;
   background: #4CAF50;
+  min-height: 44px;
+  min-width: 44px;
   color: white;
   border: none;
   padding: 12px 24px;
