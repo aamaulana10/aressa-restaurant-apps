@@ -74,6 +74,7 @@
     grid-template-columns: 1fr;
     padding: 24px;
     text-align: center;
+    margin: 90px auto 0;
   }
 
   .hero__inner {
@@ -157,5 +158,9 @@
 @media screen and (min-width: 1200px) {
   .restaurant-list {
     grid-template-columns: repeat(3, 1fr);
+  }
+
+  .hero__image img {
+    min-width: 1000px;
   }
 }
