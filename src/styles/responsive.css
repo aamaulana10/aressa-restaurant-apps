@@ -146,7 +146,7 @@
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .restaurant-item__title {
+  .restaurant-item__name {
     font-size: 18px;
   }
 
