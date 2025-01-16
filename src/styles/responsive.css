@@ -75,6 +75,8 @@
     padding: 24px;
     text-align: center;
     margin: 90px auto 0;
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+      url('/dist/images/heros/hero-image-small.jpg');
   }
 
   .hero__inner {
