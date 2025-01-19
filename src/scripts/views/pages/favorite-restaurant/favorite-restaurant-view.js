@@ -4,10 +4,15 @@ class FavoriteRestaurantView {
   getTemplate() {
     return `
       <div class="content">
-        <input id="query" type="text">
         <h2 class="content__heading">Your Liked Restaurant</h2>
-  
-        <div id="restaurants" class="restaurants">
+        <div class="search-container">
+          <input 
+            id="query" 
+            type="text" 
+            placeholder="Search your favorite Restaurant"
+            class="modern-input">
+        </div>
+        <div id="restaurants" class="restaurant-list">
         </div>
       </div>
     `;
@@ -35,7 +40,7 @@ class FavoriteRestaurantView {
   _getEmptyRestaurantTemplate() {
     return `
       <div class="restaurant-item__not__found">
-        Tidak ada film untuk ditampilkan
+        Tidak ada restaurant untuk ditampilkan
       </div>
     `;
   }
