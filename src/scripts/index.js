@@ -2,10 +2,7 @@ import '../styles/main.css';
 import '../styles/responsive.css';
 import '../styles/animation.css';
 import App from './views/app';
-import swRegister from './utils/sw-register';
-import WebSocketInitiator from './utils/websocket-initiator';
 import CONFIG from './globals/config';
-
 
 let prevPage = null;
 
@@ -37,7 +34,14 @@ window.addEventListener('hashchange', async () => {
 window.addEventListener('load', async () => {
   prevPage = await app.renderPage();
   setupHeaderScroll();
-  swRegister();
-  WebSocketInitiator.init(CONFIG.WEB_SOCKET_SERVER);
-});
 
+  import('./utils/sw-register').then((module) => {
+    const swRegister = module.default;
+    swRegister();
+  });
+
+  import('./utils/websocket-initiator').then((module) => {
+    const WebSocketInitiator = module.default;
+    WebSocketInitiator.init(CONFIG.WEB_SOCKET_SERVER);
+  });
+});

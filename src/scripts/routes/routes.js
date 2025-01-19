@@ -1,12 +1,27 @@
-import Detail from '../views/pages/detail';
-import Favorite from '../views/pages/favorite';
 import Home from '../views/pages/home';
 
 const routes = {
-  '/': Home, // default page
-  '/home': Home,
-  '/favorite': Favorite,
-  '/detail/:id': Detail,
+  '/': Home,
+  '/detail/:id': {
+    render: async () => {
+      const module = await import(/* webpackChunkName: "detail" */ '../views/pages/detail');
+      return module.default.render();
+    },
+    afterRender: async () => {
+      const module = await import(/* webpackChunkName: "detail" */ '../views/pages/detail');
+      return module.default.afterRender();
+    },
+  },
+  '/favorite': {
+    render: async () => {
+      const module = await import(/* webpackChunkName: "favorite" */ '../views/pages/favorite');
+      return module.default.render();
+    },
+    afterRender: async () => {
+      const module = await import(/* webpackChunkName: "favorite" */ '../views/pages/favorite');
+      return module.default.afterRender();
+    },
+  },
 };
 
 export default routes;
