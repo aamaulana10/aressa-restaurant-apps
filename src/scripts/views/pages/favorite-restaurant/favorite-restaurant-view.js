@@ -4,15 +4,17 @@ class FavoriteRestaurantView {
   getTemplate() {
     return `
       <div class="content">
-        <h2 class="content__heading">Your Liked Restaurant</h2>
-        <div class="search-container">
+        <div class="favorite_content__wrapper">
+          <h2 class="content__heading">Your Favorite Restaurant</h2>
+         <div class="search-container">
           <input 
             id="query" 
             type="text" 
             placeholder="Search your favorite Restaurant"
             class="modern-input">
+         </div>
+         <div id="restaurants" class="restaurant-list">
         </div>
-        <div id="restaurants" class="restaurant-list">
         </div>
       </div>
     `;

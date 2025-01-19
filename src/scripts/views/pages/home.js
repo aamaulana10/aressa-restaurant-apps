@@ -21,6 +21,9 @@ const Home = {
 
   async afterRender() {
 
+    const heroSection = document.querySelector('.hero');
+    if (heroSection) heroSection.style.display = 'grid';
+
     const loadingElement = document.querySelector('#loading');
     const restaurantsContainer = document.querySelector('.restaurant-list');
     const errorContainer = document.querySelector('#mainError');
