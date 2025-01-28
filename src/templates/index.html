@@ -31,6 +31,11 @@
     </div>
   </header>
   <div class="hero">
+    <picture>
+      <source media="(max-width: 600px)" srcset="./images/heros/hero-image-small.jpg">
+      <source media="(min-width: 601px)" srcset="./images/heros/hero-image-large.jpg">
+      <img src="./images/heros/hero-image-large.jpg" alt="Hero image of restaurant" class="hero__image">
+    </picture>
     <div class="hero__inner">
       <h1 class="hero__title">Discover Healthy Dining with Aressa D'Resto</h1>
       <p class="hero__tagline">
@@ -75,7 +80,8 @@
     <div class="newsletter-content">
       <div class="newsletter-text">
         <h2>Stay Updated with Aressa D'Resto</h2>
-        <p>Subscribe to receive updates about new restaurant partners, healthy menu additions, and wellness tips.</p>
+        <p>Subscribe to receive updates about our new restaurant partners, healthy menu additions, and wellness tips.
+        </p>
       </div>
       <form class="newsletter-form">
         <input type="email" placeholder="Your email address" required>
