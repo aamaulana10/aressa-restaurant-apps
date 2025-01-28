@@ -1,45 +1,33 @@
 import RestaurantSource from '../../data/restaurants-source';
-import { createRestaurantItemTemplate, createErrorTemplate, createLoadingTemplate } from '../templates/template-creator';
+import { createRestaurantItemTemplate, createErrorTemplate, createSkeletonRestaurantTemplate } from '../templates/template-creator';
 
 const Home = {
   async render() {
     return `
-            <div>
-                <section class="content">
-                <div>
-                <h2 class="content__title">Our Healty Partner</h2>
-                ${createLoadingTemplate()}
-                <div id="mainError"></div>
-                 <div class="restaurant-list">
-                 </div>
-                 </div>
-                </section>
+      <div>
+        <section class="content">
+          <div>
+            <h2 class="content__title">Our Healty Partner</h2>
+            <div class="restaurant-list">
+              ${createSkeletonRestaurantTemplate(6)}
             </div>
-        `;
+            <div id="mainError"></div>
+          </div>
+        </section>
+      </div>
+    `;
   },
 
-
   async afterRender() {
-
     const heroSection = document.querySelector('.hero');
     if (heroSection) heroSection.style.display = 'grid';
 
-    const loadingElement = document.querySelector('#loading');
     const restaurantsContainer = document.querySelector('.restaurant-list');
     const errorContainer = document.querySelector('#mainError');
 
-    // Show loading
-    loadingElement.style.display = 'flex';
-    restaurantsContainer.style.display = 'none';
-    errorContainer.style.display = 'none';
-
     setTimeout(async () => {
-
       try {
-
         const restaurants = await RestaurantSource.getAllRestaurants();
-
-        loadingElement.style.display = 'none';
 
         if (restaurants.error) {
           restaurantsContainer.style.display = 'none';
@@ -61,6 +49,7 @@ const Home = {
           return;
         }
 
+        restaurantsContainer.innerHTML = '';
         errorContainer.style.display = 'none';
         restaurantsContainer.style.display = 'grid';
 
@@ -69,7 +58,6 @@ const Home = {
         });
 
       } catch (error) {
-        loadingElement.style.display = 'none';
         restaurantsContainer.style.display = 'none';
         errorContainer.style.display = 'block';
         console.log(error);

@@ -112,3 +112,46 @@ Scenario('searching restaurants', async ({ I }) => {
       `Restaurant "${visibleName}" should contain search query "${searchQuery}"`);
   }
 });
+
+Scenario('searching restaurants with empty query', async ({ I }) => {
+  // Like some restaurants first
+  I.amOnPage('/');
+  I.waitForElement('.restaurant-item', 5);
+
+  // Like first restaurant
+  I.click(locate('.restaurant-item').first());
+  I.waitForElement('#likeButton', 5);
+  I.click('#likeButton');
+
+  // Go to favorite and search
+  I.amOnPage('/#/favorite');
+  I.waitForElement('.restaurant-item', 5);
+  I.seeElement('#query');
+
+  // Search with empty query
+  I.fillField('#query', ' ');
+  I.pressKey('Enter');
+
+  // Should show all liked restaurants
+  I.seeElement('.restaurant-item');
+  const visibleRestaurants = await I.grabNumberOfVisibleElements('.restaurant-item');
+  assert.strictEqual(visibleRestaurants, 1);
+});
+
+Scenario('searching restaurants with non-existent name', async ({ I }) => {
+  // Like a restaurant first
+  I.amOnPage('/');
+  I.waitForElement('.restaurant-item', 5);
+  I.click(locate('.restaurant-item').first());
+  I.waitForElement('#likeButton', 5);
+  I.click('#likeButton');
+
+  // Search non-existent restaurant
+  I.amOnPage('/#/favorite');
+  I.waitForElement('#query', 5);
+  I.fillField('#query', 'ThisRestaurantDoesNotExist');
+  I.pressKey('Enter');
+
+  // Should show not found message
+  I.see('Tidak ada restaurant untuk ditampilkan', '.restaurant-item__not__found');
+});

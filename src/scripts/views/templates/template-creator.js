@@ -119,4 +119,22 @@ const createDetailRestaurantItemTemplate = (restaurant) => `
         </div>
       `;
 
-export { createRestaurantItemTemplate, createFeaturesItemTemplate, createLikeButtonTemplate, createLikedButtonTemplate, createLoadingTemplate, createErrorTemplate, createDetailRestaurantItemTemplate };
+const createSkeletonRestaurantTemplate = (count) => {
+  let template = '';
+
+  for (let i = 0; i < count; i++) {
+    template += `
+      <div class="restaurant-item skeleton">
+        <div class="skeleton-thumbnail"></div>
+        <div class="skeleton-content">
+          <div class="skeleton-title"></div>
+          <div class="skeleton-rating"></div>
+          <div class="skeleton-description"></div>
+        </div>
+      </div>
+    `;
+  }
+  return template;
+};
+
+export { createRestaurantItemTemplate, createFeaturesItemTemplate, createLikeButtonTemplate, createLikedButtonTemplate, createLoadingTemplate, createErrorTemplate, createDetailRestaurantItemTemplate, createSkeletonRestaurantTemplate };

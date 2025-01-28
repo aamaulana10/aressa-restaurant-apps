@@ -4,11 +4,11 @@ const routes = {
   '/': Home,
   '/detail/:id': {
     render: async () => {
-      const module = await import(/* webpackChunkName: "detail" */ '../views/pages/detail');
+      const module = await import(/* webpackChunkName: "detail" */ '../views/pages/restaurant-detail');
       return module.default.render();
     },
     afterRender: async () => {
-      const module = await import(/* webpackChunkName: "detail" */ '../views/pages/detail');
+      const module = await import(/* webpackChunkName: "detail" */ '../views/pages/restaurant-detail');
       return module.default.afterRender();
     },
   },
