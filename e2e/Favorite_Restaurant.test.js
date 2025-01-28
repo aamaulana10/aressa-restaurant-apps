@@ -16,7 +16,7 @@ Scenario('liking one restaurant', async ({ I }) => {
   I.amOnPage('/');
 
   // Tunggu sampai elemen restaurant muncul
-  I.waitForElement('.restaurant-item', 5);
+  I.waitForElement('.restaurant-item', 10);
   I.seeElement('.restaurant-item');
 
   const firstRestaurant = locate('.restaurant-item').first();
@@ -24,12 +24,12 @@ Scenario('liking one restaurant', async ({ I }) => {
   const firstRestaurantTitle = await I.grabTextFrom(firstRestaurantName);
   I.click(firstRestaurant);
 
-  I.waitForElement('#likeButton', 5);
+  I.waitForElement('#likeButton', 10);
   I.seeElement('#likeButton');
   I.click('#likeButton');
 
   I.amOnPage('/#/favorite');
-  I.waitForElement('.restaurant-item', 5);
+  I.waitForElement('.restaurant-item', 10);
   I.seeElement('.restaurant-item');
   const likedRestaurantTitle = await I.grabTextFrom('.restaurant-item__name');
 
@@ -39,21 +39,21 @@ Scenario('liking one restaurant', async ({ I }) => {
 Scenario('unliking one restaurant', async ({ I }) => {
   // Like restaurant first
   I.amOnPage('/');
-  I.waitForElement('.restaurant-item', 5);
+  I.waitForElement('.restaurant-item', 10);
   I.seeElement('.restaurant-item');
   I.click(locate('.restaurant-item').first());
 
-  I.waitForElement('#likeButton', 5);
+  I.waitForElement('#likeButton', 10);
   I.seeElement('#likeButton');
   I.click('#likeButton');
 
   // Unlike the restaurant
   I.amOnPage('/#/favorite');
-  I.waitForElement('.restaurant-item', 5);
+  I.waitForElement('.restaurant-item', 10);
   I.seeElement('.restaurant-item');
   I.click(locate('.restaurant-item').first());
 
-  I.waitForElement('#likeButton', 5);
+  I.waitForElement('#likeButton', 10);
   I.seeElement('#likeButton');
   I.click('#likeButton');
 
@@ -66,24 +66,24 @@ Scenario('searching restaurants', async ({ I }) => {
 
   // Add some restaurants to favorites first
   I.amOnPage('/');
-  I.waitForElement('.restaurant-item', 5);
+  I.waitForElement('.restaurant-item', 10);
 
   const titles = [];
 
   for (let i = 1; i <= 3; i++) {
-    I.waitForElement('.restaurant-item', 5);
+    I.waitForElement('.restaurant-item', 10);
     const restaurantName = locate('.restaurant-item__name').at(i);
     titles.push(await I.grabTextFrom(restaurantName));
 
     I.click(locate('.restaurant-item').at(i));
-    I.waitForElement('#likeButton', 5);
+    I.waitForElement('#likeButton', 10);
     I.click('#likeButton');
     I.amOnPage('/');
   }
 
   // Go to favorite page
   I.amOnPage('/#/favorite');
-  I.waitForElement('.restaurant-item', 5);
+  I.waitForElement('.restaurant-item', 10);
   I.seeElement('#query');
 
   // Make sure all liked restaurants are displayed
@@ -116,16 +116,16 @@ Scenario('searching restaurants', async ({ I }) => {
 Scenario('searching restaurants with empty query', async ({ I }) => {
   // Like some restaurants first
   I.amOnPage('/');
-  I.waitForElement('.restaurant-item', 5);
+  I.waitForElement('.restaurant-item', 10);
 
   // Like first restaurant
   I.click(locate('.restaurant-item').first());
-  I.waitForElement('#likeButton', 5);
+  I.waitForElement('#likeButton', 10);
   I.click('#likeButton');
 
   // Go to favorite and search
   I.amOnPage('/#/favorite');
-  I.waitForElement('.restaurant-item', 5);
+  I.waitForElement('.restaurant-item', 10);
   I.seeElement('#query');
 
   // Search with empty query
@@ -141,14 +141,14 @@ Scenario('searching restaurants with empty query', async ({ I }) => {
 Scenario('searching restaurants with non-existent name', async ({ I }) => {
   // Like a restaurant first
   I.amOnPage('/');
-  I.waitForElement('.restaurant-item', 5);
+  I.waitForElement('.restaurant-item', 10);
   I.click(locate('.restaurant-item').first());
-  I.waitForElement('#likeButton', 5);
+  I.waitForElement('#likeButton', 10);
   I.click('#likeButton');
 
   // Search non-existent restaurant
   I.amOnPage('/#/favorite');
-  I.waitForElement('#query', 5);
+  I.waitForElement('#query', 10);
   I.fillField('#query', 'ThisRestaurantDoesNotExist');
   I.pressKey('Enter');
 

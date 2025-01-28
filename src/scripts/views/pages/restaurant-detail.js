@@ -33,44 +33,42 @@ const RestaurantDetail = {
     restaurantContainer.style.display = 'none';
     errorContainer.style.display = 'none';
 
-    setTimeout(async () => {
-      try {
-        const url = UrlParser.parseActiveUrlWithoutCombiner();
+    try {
+      const url = UrlParser.parseActiveUrlWithoutCombiner();
 
-        const restaurant = await RestaurantSource.getDetailRestaurant(url.id);
+      const restaurant = await RestaurantSource.getDetailRestaurant(url.id);
 
-        if (restaurant.error) {
-          throw new Error(restaurant.message);
-        }
-
-        // Hide loading skeleton and show content
-        loadingElement.style.display = 'none';
-        restaurantContainer.style.display = 'block';
-        restaurantContainer.innerHTML = createDetailRestaurantItemTemplate(restaurant);
-
-        // Initialize like button
-        const likeButtonContainer = document.querySelector('#likeButtonContainer');
-        await LikeButtonPresenter.init({
-          likeButtonContainer,
-          restaurant: {
-            id: restaurant.id,
-            name: restaurant.name,
-            description: restaurant.description,
-            pictureId: restaurant.pictureId,
-            city: restaurant.city,
-            rating: restaurant.rating,
-          },
-        });
-      } catch (error) {
-        // Show error and hide other elements
-        loadingElement.style.display = 'none';
-        restaurantContainer.style.display = 'none';
-        errorContainer.style.display = 'block';
-        errorContainer.innerHTML = createErrorTemplate(
-          error.message || 'Failed to load restaurant details'
-        );
+      if (restaurant.error) {
+        throw new Error(restaurant.message);
       }
-    }, 2000);
+
+      // Hide loading skeleton and show content
+      loadingElement.style.display = 'none';
+      restaurantContainer.style.display = 'block';
+      restaurantContainer.innerHTML = createDetailRestaurantItemTemplate(restaurant);
+
+      // Initialize like button
+      const likeButtonContainer = document.querySelector('#likeButtonContainer');
+      await LikeButtonPresenter.init({
+        likeButtonContainer,
+        restaurant: {
+          id: restaurant.id,
+          name: restaurant.name,
+          description: restaurant.description,
+          pictureId: restaurant.pictureId,
+          city: restaurant.city,
+          rating: restaurant.rating,
+        },
+      });
+    } catch (error) {
+      // Show error and hide other elements
+      loadingElement.style.display = 'none';
+      restaurantContainer.style.display = 'none';
+      errorContainer.style.display = 'block';
+      errorContainer.innerHTML = createErrorTemplate(
+        error.message || 'Failed to load restaurant details'
+      );
+    }
   },
 
   async beforeLeave() {
