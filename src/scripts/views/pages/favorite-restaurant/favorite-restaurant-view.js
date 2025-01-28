@@ -28,6 +28,7 @@ class FavoriteRestaurantView {
 
   showFavoriteRestaurants(restaurant) {
     let html;
+
     if (restaurant.length) {
       html = restaurant.reduce((carry, restaurants) => carry.concat(createRestaurantItemTemplate(restaurants)), '');
     } else {

@@ -61,15 +61,15 @@ describe('Showing all favorite restaurants', () => {
         getAllRestaurants: jest.fn().mockImplementation(() => [
           {
             id: 11,
-            title: 'A',
+            name: 'a',
             vote_average: 3,
-            overview: 'Sebuah film A',
+            overview: 'restaurant a',
           },
           {
             id: 22,
-            title: 'B',
+            name: 'b',
             vote_average: 4,
-            overview: 'Sebuah film B',
+            overview: 'restaurant b',
           },
         ]),
       };

@@ -64,9 +64,9 @@ describe('Searching restaurants', () => {
       favoriteRestaurants.searchRestaurants.mockImplementation((query) => {
         if (query === 'restaurant a') {
           return [
-            { id: 111, title: 'restaurant abc' },
-            { id: 222, title: 'ada juga restaurant abcde' },
-            { id: 333, title: 'ini juga boleh restaurant a' },
+            { id: 111, name: 'restaurant abc' },
+            { id: 222, name: 'ada juga restaurant abcde' },
+            { id: 333, name: 'ini juga boleh restaurant a' },
           ];
         }
 
@@ -90,9 +90,9 @@ describe('Searching restaurants', () => {
       favoriteRestaurants.searchRestaurants.mockImplementation((query) => {
         if (query === 'restaurant a') {
           return [
-            { id: 111, title: 'restaurant abc' },
-            { id: 222, title: 'ada juga restaurant abcde' },
-            { id: 333, title: 'ini juga boleh restaurant a' },
+            { id: 111, name: 'restaurant abc' },
+            { id: 222, name: 'ada juga restaurant abcde' },
+            { id: 333, name: 'ini juga boleh restaurant a' },
           ];
         }
 

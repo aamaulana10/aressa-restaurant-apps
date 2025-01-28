@@ -44,10 +44,10 @@ const itActsAsFavoriteRestaurantModel = (favoriteRestaurant) => {
 
   it('should be able to search for restaurants', async () => {
     await favoriteRestaurant.putRestaurant({ id: 1, name: 'restaurant a' });
+    await favoriteRestaurant.putRestaurant({ id: 2, name: 'restaurant b' });
 
-    expect(await favoriteRestaurant.searchRestaurants('restaurant a')).toEqual([
-      { id: 1, name: 'restaurant a' },
-    ]);
+    const result = await favoriteRestaurant.searchRestaurants('restaurant a');
+    expect(result).toEqual([{ id: 1, name: 'restaurant a' }]);
   });
 };
 

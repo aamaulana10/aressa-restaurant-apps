@@ -38,7 +38,6 @@ const Home = {
       try {
 
         const restaurants = await RestaurantSource.getAllRestaurants();
-        console.log('RESTAURANT ', restaurants);
 
         loadingElement.style.display = 'none';
 

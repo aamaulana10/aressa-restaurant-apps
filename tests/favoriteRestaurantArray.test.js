@@ -9,7 +9,6 @@ const FavoriteRestaurantArray = {
       return;
     }
 
-    // eslint-disable-next-line consistent-return, , eqeqeq
     return favoriteRestaurants.find((restaurant) => restaurant.id == id);
   },
 
@@ -35,20 +34,19 @@ const FavoriteRestaurantArray = {
     // cara boros menghapus film dengan meng-copy film yang ada
     // kecuali film dengan id == id
 
-    // eslint-disable-next-line eqeqeq
     favoriteRestaurants = favoriteRestaurants.filter((restaurant) => restaurant.id != id);
   },
 
   async searchRestaurants(query) {
-    return (await this.getAllRestaurants()).filter((restaurant) => {
-      const loweredCaseRestaurantTitle = (restaurant.title || '-').toLowerCase();
-      const jammedRestaurantTitle = loweredCaseRestaurantTitle.replace(/\s/g, '');
+    const restaurants = await this.getAllRestaurants();
 
-      const loweredCaseQuery = query.toLowerCase();
-      const jammedQuery = loweredCaseQuery.replace(/\s/g, '');
-
-      return jammedRestaurantTitle.indexOf(jammedQuery) !== -1;
+    const foundRestaurants = restaurants.filter((restaurant) => {
+      const loweredCaseRestaurantName = (restaurant.name || '').toLowerCase();
+      const isMatch = loweredCaseRestaurantName.includes(query.toLowerCase());
+      return isMatch;
     });
+
+    return foundRestaurants;
   },
 };
 
