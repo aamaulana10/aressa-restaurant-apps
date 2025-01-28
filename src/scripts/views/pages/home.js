@@ -25,55 +25,53 @@ const Home = {
     const restaurantsContainer = document.querySelector('.restaurant-list');
     const errorContainer = document.querySelector('#mainError');
 
-    setTimeout(async () => {
-      try {
-        const restaurants = await RestaurantSource.getAllRestaurants();
+    try {
+      const restaurants = await RestaurantSource.getAllRestaurants();
 
-        if (restaurants.error) {
-          restaurantsContainer.style.display = 'none';
-          errorContainer.style.display = 'block';
-          errorContainer.innerHTML = createErrorTemplate(
-            'Failed to load restaurants. Please check your connection and try again.',
-            true
-          );
-          return;
-        }
-
-        if (!restaurants.length) {
-          restaurantsContainer.style.display = 'none';
-          errorContainer.style.display = 'block';
-          errorContainer.innerHTML = createErrorTemplate(
-            'No restaurants found.',
-            false
-          );
-          return;
-        }
-
-        restaurantsContainer.innerHTML = '';
-        errorContainer.style.display = 'none';
-        restaurantsContainer.style.display = 'grid';
-
-        restaurants.forEach((restaurant) => {
-          restaurantsContainer.innerHTML += createRestaurantItemTemplate(restaurant);
-        });
-
-      } catch (error) {
+      if (restaurants.error) {
         restaurantsContainer.style.display = 'none';
         errorContainer.style.display = 'block';
-        console.log(error);
-        if (!navigator.onLine) {
-          errorContainer.innerHTML = createErrorTemplate(
-            'You are offline. Please check your internet connection.',
-            true
-          );
-        } else {
-          errorContainer.innerHTML = createErrorTemplate(
-            'Something went wrong while loading the restaurants.',
-            true
-          );
-        }
+        errorContainer.innerHTML = createErrorTemplate(
+          'Failed to load restaurants. Please check your connection and try again.',
+          true
+        );
+        return;
       }
-    }, 2000);
+
+      if (!restaurants.length) {
+        restaurantsContainer.style.display = 'none';
+        errorContainer.style.display = 'block';
+        errorContainer.innerHTML = createErrorTemplate(
+          'No restaurants found.',
+          false
+        );
+        return;
+      }
+
+      restaurantsContainer.innerHTML = '';
+      errorContainer.style.display = 'none';
+      restaurantsContainer.style.display = 'grid';
+
+      restaurants.forEach((restaurant) => {
+        restaurantsContainer.innerHTML += createRestaurantItemTemplate(restaurant);
+      });
+
+    } catch (error) {
+      restaurantsContainer.style.display = 'none';
+      errorContainer.style.display = 'block';
+      console.log(error);
+      if (!navigator.onLine) {
+        errorContainer.innerHTML = createErrorTemplate(
+          'You are offline. Please check your internet connection.',
+          true
+        );
+      } else {
+        errorContainer.innerHTML = createErrorTemplate(
+          'Something went wrong while loading the restaurants.',
+          true
+        );
+      }
+    }
   },
 };
 
