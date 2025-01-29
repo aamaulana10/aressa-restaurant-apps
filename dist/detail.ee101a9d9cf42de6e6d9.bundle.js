@@ -287,10 +287,10 @@ var RestaurantDetail = {
     }))();
   },
   afterRender: function afterRender() {
-    return restaurant_detail_asyncToGenerator(/*#__PURE__*/restaurant_detail_regeneratorRuntime().mark(function _callee3() {
-      var heroSection, loadingElement, restaurantContainer, errorContainer;
-      return restaurant_detail_regeneratorRuntime().wrap(function _callee3$(_context3) {
-        while (1) switch (_context3.prev = _context3.next) {
+    return restaurant_detail_asyncToGenerator(/*#__PURE__*/restaurant_detail_regeneratorRuntime().mark(function _callee2() {
+      var heroSection, loadingElement, restaurantContainer, errorContainer, url, restaurant, likeButtonContainer;
+      return restaurant_detail_regeneratorRuntime().wrap(function _callee2$(_context2) {
+        while (1) switch (_context2.prev = _context2.next) {
           case 0:
             heroSection = document.querySelector('.hero');
             if (heroSection) heroSection.style.display = 'none';
@@ -300,79 +300,68 @@ var RestaurantDetail = {
             loadingElement.style.display = 'block';
             restaurantContainer.style.display = 'none';
             errorContainer.style.display = 'none';
-            setTimeout(/*#__PURE__*/restaurant_detail_asyncToGenerator(/*#__PURE__*/restaurant_detail_regeneratorRuntime().mark(function _callee2() {
-              var url, restaurant, likeButtonContainer;
-              return restaurant_detail_regeneratorRuntime().wrap(function _callee2$(_context2) {
-                while (1) switch (_context2.prev = _context2.next) {
-                  case 0:
-                    _context2.prev = 0;
-                    url = url_parser/* default */.A.parseActiveUrlWithoutCombiner();
-                    _context2.next = 4;
-                    return restaurants_source/* default */.A.getDetailRestaurant(url.id);
-                  case 4:
-                    restaurant = _context2.sent;
-                    if (!restaurant.error) {
-                      _context2.next = 7;
-                      break;
-                    }
-                    throw new Error(restaurant.message);
-                  case 7:
-                    // Hide loading skeleton and show content
-                    loadingElement.style.display = 'none';
-                    restaurantContainer.style.display = 'block';
-                    restaurantContainer.innerHTML = (0,template_creator/* createDetailRestaurantItemTemplate */.Y)(restaurant);
+            _context2.prev = 8;
+            url = url_parser/* default */.A.parseActiveUrlWithoutCombiner();
+            _context2.next = 12;
+            return restaurants_source/* default */.A.getDetailRestaurant(url.id);
+          case 12:
+            restaurant = _context2.sent;
+            if (!restaurant.error) {
+              _context2.next = 15;
+              break;
+            }
+            throw new Error(restaurant.message);
+          case 15:
+            // Hide loading skeleton and show content
+            loadingElement.style.display = 'none';
+            restaurantContainer.style.display = 'block';
+            restaurantContainer.innerHTML = (0,template_creator/* createDetailRestaurantItemTemplate */.Y)(restaurant);
 
-                    // Initialize like button
-                    likeButtonContainer = document.querySelector('#likeButtonContainer');
-                    _context2.next = 13;
-                    return like_button_presenter.init({
-                      likeButtonContainer: likeButtonContainer,
-                      restaurant: {
-                        id: restaurant.id,
-                        name: restaurant.name,
-                        description: restaurant.description,
-                        pictureId: restaurant.pictureId,
-                        city: restaurant.city,
-                        rating: restaurant.rating
-                      }
-                    });
-                  case 13:
-                    _context2.next = 21;
-                    break;
-                  case 15:
-                    _context2.prev = 15;
-                    _context2.t0 = _context2["catch"](0);
-                    // Show error and hide other elements
-                    loadingElement.style.display = 'none';
-                    restaurantContainer.style.display = 'none';
-                    errorContainer.style.display = 'block';
-                    errorContainer.innerHTML = (0,template_creator/* createErrorTemplate */.fm)(_context2.t0.message || 'Failed to load restaurant details');
-                  case 21:
-                  case "end":
-                    return _context2.stop();
-                }
-              }, _callee2, null, [[0, 15]]);
-            })), 2000);
-          case 9:
+            // Initialize like button
+            likeButtonContainer = document.querySelector('#likeButtonContainer');
+            _context2.next = 21;
+            return like_button_presenter.init({
+              likeButtonContainer: likeButtonContainer,
+              restaurant: {
+                id: restaurant.id,
+                name: restaurant.name,
+                description: restaurant.description,
+                pictureId: restaurant.pictureId,
+                city: restaurant.city,
+                rating: restaurant.rating
+              }
+            });
+          case 21:
+            _context2.next = 29;
+            break;
+          case 23:
+            _context2.prev = 23;
+            _context2.t0 = _context2["catch"](8);
+            // Show error and hide other elements
+            loadingElement.style.display = 'none';
+            restaurantContainer.style.display = 'none';
+            errorContainer.style.display = 'block';
+            errorContainer.innerHTML = (0,template_creator/* createErrorTemplate */.fm)(_context2.t0.message || 'Failed to load restaurant details');
+          case 29:
           case "end":
-            return _context3.stop();
+            return _context2.stop();
         }
-      }, _callee3);
+      }, _callee2, null, [[8, 23]]);
     }))();
   },
   beforeLeave: function beforeLeave() {
-    return restaurant_detail_asyncToGenerator(/*#__PURE__*/restaurant_detail_regeneratorRuntime().mark(function _callee4() {
+    return restaurant_detail_asyncToGenerator(/*#__PURE__*/restaurant_detail_regeneratorRuntime().mark(function _callee3() {
       var heroSection;
-      return restaurant_detail_regeneratorRuntime().wrap(function _callee4$(_context4) {
-        while (1) switch (_context4.prev = _context4.next) {
+      return restaurant_detail_regeneratorRuntime().wrap(function _callee3$(_context3) {
+        while (1) switch (_context3.prev = _context3.next) {
           case 0:
             heroSection = document.querySelector('.hero');
             if (heroSection) heroSection.style.display = 'grid';
           case 2:
           case "end":
-            return _context4.stop();
+            return _context3.stop();
         }
-      }, _callee4);
+      }, _callee3);
     }))();
   }
 };
@@ -381,4 +370,4 @@ var RestaurantDetail = {
 /***/ })
 
 }]);
-//# sourceMappingURL=detail.aa21cb1f61829e08db41.bundle.js.map
+//# sourceMappingURL=detail.ee101a9d9cf42de6e6d9.bundle.js.map
