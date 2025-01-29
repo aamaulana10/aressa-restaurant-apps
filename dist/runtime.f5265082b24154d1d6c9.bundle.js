@@ -104,7 +104,7 @@
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames based on template
-/******/ 			return "" + ({"332":"detail","895":"favorite"}[chunkId] || chunkId) + "." + {"238":"842701efc8a6826850e4","332":"aa21cb1f61829e08db41","777":"00516155cdb34ed74248","895":"e65b0e4ea56a31f6697f","993":"03f0a0618265c1f917cd"}[chunkId] + ".bundle.js";
+/******/ 			return "" + ({"332":"detail","895":"favorite"}[chunkId] || chunkId) + "." + {"238":"842701efc8a6826850e4","332":"ee101a9d9cf42de6e6d9","777":"00516155cdb34ed74248","895":"e65b0e4ea56a31f6697f","993":"03f0a0618265c1f917cd"}[chunkId] + ".bundle.js";
 /******/ 		};
 /******/ 	})();
 /******/ 	
@@ -310,4 +310,4 @@
 /******/ 	
 /******/ })()
 ;
-//# sourceMappingURL=runtime.77a59c9507bfbac4dd7b.bundle.js.map
+//# sourceMappingURL=runtime.f5265082b24154d1d6c9.bundle.js.map

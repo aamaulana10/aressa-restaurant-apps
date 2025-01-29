@@ -68,73 +68,62 @@ var Home = {
     }))();
   },
   afterRender: function afterRender() {
-    return _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee3() {
-      var heroSection, restaurantsContainer, errorContainer;
-      return _regeneratorRuntime().wrap(function _callee3$(_context3) {
-        while (1) switch (_context3.prev = _context3.next) {
+    return _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
+      var heroSection, restaurantsContainer, errorContainer, restaurants;
+      return _regeneratorRuntime().wrap(function _callee2$(_context2) {
+        while (1) switch (_context2.prev = _context2.next) {
           case 0:
             heroSection = document.querySelector('.hero');
             if (heroSection) heroSection.style.display = 'grid';
             restaurantsContainer = document.querySelector('.restaurant-list');
             errorContainer = document.querySelector('#mainError');
-            setTimeout(/*#__PURE__*/_asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
-              var restaurants;
-              return _regeneratorRuntime().wrap(function _callee2$(_context2) {
-                while (1) switch (_context2.prev = _context2.next) {
-                  case 0:
-                    _context2.prev = 0;
-                    _context2.next = 3;
-                    return restaurants_source/* default */.A.getAllRestaurants();
-                  case 3:
-                    restaurants = _context2.sent;
-                    if (!restaurants.error) {
-                      _context2.next = 9;
-                      break;
-                    }
-                    restaurantsContainer.style.display = 'none';
-                    errorContainer.style.display = 'block';
-                    errorContainer.innerHTML = (0,template_creator/* createErrorTemplate */.fm)('Failed to load restaurants. Please check your connection and try again.', true);
-                    return _context2.abrupt("return");
-                  case 9:
-                    if (restaurants.length) {
-                      _context2.next = 14;
-                      break;
-                    }
-                    restaurantsContainer.style.display = 'none';
-                    errorContainer.style.display = 'block';
-                    errorContainer.innerHTML = (0,template_creator/* createErrorTemplate */.fm)('No restaurants found.', false);
-                    return _context2.abrupt("return");
-                  case 14:
-                    restaurantsContainer.innerHTML = '';
-                    errorContainer.style.display = 'none';
-                    restaurantsContainer.style.display = 'grid';
-                    restaurants.forEach(function (restaurant) {
-                      restaurantsContainer.innerHTML += (0,template_creator/* createRestaurantItemTemplate */.jG)(restaurant);
-                    });
-                    _context2.next = 26;
-                    break;
-                  case 20:
-                    _context2.prev = 20;
-                    _context2.t0 = _context2["catch"](0);
-                    restaurantsContainer.style.display = 'none';
-                    errorContainer.style.display = 'block';
-                    console.log(_context2.t0);
-                    if (!navigator.onLine) {
-                      errorContainer.innerHTML = (0,template_creator/* createErrorTemplate */.fm)('You are offline. Please check your internet connection.', true);
-                    } else {
-                      errorContainer.innerHTML = (0,template_creator/* createErrorTemplate */.fm)('Something went wrong while loading the restaurants.', true);
-                    }
-                  case 26:
-                  case "end":
-                    return _context2.stop();
-                }
-              }, _callee2, null, [[0, 20]]);
-            })), 2000);
-          case 5:
+            _context2.prev = 4;
+            _context2.next = 7;
+            return restaurants_source/* default */.A.getAllRestaurants();
+          case 7:
+            restaurants = _context2.sent;
+            if (!restaurants.error) {
+              _context2.next = 13;
+              break;
+            }
+            restaurantsContainer.style.display = 'none';
+            errorContainer.style.display = 'block';
+            errorContainer.innerHTML = (0,template_creator/* createErrorTemplate */.fm)('Failed to load restaurants. Please check your connection and try again.', true);
+            return _context2.abrupt("return");
+          case 13:
+            if (restaurants.length) {
+              _context2.next = 18;
+              break;
+            }
+            restaurantsContainer.style.display = 'none';
+            errorContainer.style.display = 'block';
+            errorContainer.innerHTML = (0,template_creator/* createErrorTemplate */.fm)('No restaurants found.', false);
+            return _context2.abrupt("return");
+          case 18:
+            restaurantsContainer.innerHTML = '';
+            errorContainer.style.display = 'none';
+            restaurantsContainer.style.display = 'grid';
+            restaurants.forEach(function (restaurant) {
+              restaurantsContainer.innerHTML += (0,template_creator/* createRestaurantItemTemplate */.jG)(restaurant);
+            });
+            _context2.next = 30;
+            break;
+          case 24:
+            _context2.prev = 24;
+            _context2.t0 = _context2["catch"](4);
+            restaurantsContainer.style.display = 'none';
+            errorContainer.style.display = 'block';
+            console.log(_context2.t0);
+            if (!navigator.onLine) {
+              errorContainer.innerHTML = (0,template_creator/* createErrorTemplate */.fm)('You are offline. Please check your internet connection.', true);
+            } else {
+              errorContainer.innerHTML = (0,template_creator/* createErrorTemplate */.fm)('Something went wrong while loading the restaurants.', true);
+            }
+          case 30:
           case "end":
-            return _context3.stop();
+            return _context2.stop();
         }
-      }, _callee3);
+      }, _callee2, null, [[4, 24]]);
     }))();
   }
 };
@@ -346,7 +335,7 @@ var App = /*#__PURE__*/function () {
 
 
 var createRestaurantItemTemplate = function createRestaurantItemTemplate(restaurant) {
-  return "\n    <div class=\"restaurant-item\">\n     <a href=\"/#/detail/".concat(restaurant.id, "\">\n        <img class=\"restaurant-item__thumbnail lazyload\" src=").concat(_globals_config__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .A.BASE_URL_IMAGE + restaurant.pictureId, " alt=", "Restaurant ".concat(restaurant.name), ">\n        <div class=\"restaurant-item__city__wrapper\">\n            <p class=\"restaurant-item__city\">").concat(restaurant.city || '-', "</p>\n        </div>\n        <div class=\"restaurant-item__content\">\n            <p class=\"restaurant-item__rating\">").concat(restaurant.rating || '-', "</p>\n            <h1 class=\"restaurant-item__name\">").concat(restaurant.name || '-', "</h1>\n            <p class=\"restaurant-item__description\">").concat(restaurant.description || '-', "</p>\n            <button class=\"read-more\">Read More</button>\n        </div>\n     </a>\n    </div>\n");
+  return "\n    <div class=\"restaurant-item\">\n     <a href=\"/#/detail/".concat(restaurant.id, "\">\n        <img class=\"restaurant-item__thumbnail lazyload\" data-src=").concat(_globals_config__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .A.BASE_URL_IMAGE + restaurant.pictureId, " alt=", "Restaurant ".concat(restaurant.name), ">\n        <div class=\"restaurant-item__city__wrapper\">\n            <p class=\"restaurant-item__city\">").concat(restaurant.city || '-', "</p>\n        </div>\n        <div class=\"restaurant-item__content\">\n            <p class=\"restaurant-item__rating\">").concat(restaurant.rating || '-', "</p>\n            <h1 class=\"restaurant-item__name\">").concat(restaurant.name || '-', "</h1>\n            <p class=\"restaurant-item__description\">").concat(restaurant.description || '-', "</p>\n            <button class=\"read-more\">Read More</button>\n        </div>\n     </a>\n    </div>\n");
 };
 var createFeaturesItemTemplate = function createFeaturesItemTemplate(feature) {
   return "\n    <div id=\"feature-template\">\n        <div class=\"feature-card\">\n            <h3 class=\"feature-content__title\">".concat(feature.title, "</h3>\n            <p class=\"feature-content__description\">").concat(feature.title, "</p>\n        </div>\n    </div>\n");
@@ -366,7 +355,7 @@ var createErrorTemplate = function createErrorTemplate() {
   return "\n  <div id=\"mainError\" class=\"error-container\">\n    <div class=\"error-content\">\n      <div class=\"error-icon\">\n        <i class=\"fa fa-exclamation-circle\"></i>\n      </div>\n      <h3 class=\"error-title\">Oops!</h3>\n      <p class=\"error-message\">".concat(message, "</p>\n      ").concat(withRetry ? "\n        <button class=\"error-retry\" onclick=\"window.location.reload()\">\n          <i class=\"fa fa-refresh\"></i> Try Again\n        </button>\n      " : '', "\n    </div>\n  </div>\n");
 };
 var createDetailRestaurantItemTemplate = function createDetailRestaurantItemTemplate(restaurant) {
-  return "\n    <div class=\"restaurant-detail__wrapper\">\n      <div class=\"restaurant-detail__header\">\n        <h2 class=\"restaurant-detail__title\">".concat(restaurant.name, "</h2>\n        <div class=\"restaurant-detail__info\">\n          <p><i class=\"fa fa-map-marker\"></i> ").concat(restaurant.address, ", ").concat(restaurant.city, "</p>\n          <p><i class=\"fa fa-star\"></i> ").concat(restaurant.rating, "</p>\n        </div>\n      </div>\n          \n      <div class=\"restaurant-detail__image\">\n        <img class=\"lazyload\" src=\"").concat(_globals_config__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .A.BASE_URL_IMAGE + restaurant.pictureId, "\" alt=\"").concat(restaurant.name, "\">\n      </div>\n\n      <div class=\"restaurant-detail__description\">\n       <h3>About</h3>\n        <p>").concat(restaurant.description, "</p>\n      </div>\n\n      <div class=\"restaurant-detail__menus\">\n        <div class=\"menu-section\">\n        <h3><i class=\"fa fa-cutlery\"></i> Foods</h3>\n        <ul>\n          ").concat(restaurant.menus.foods.map(function (food) {
+  return "\n    <div class=\"restaurant-detail__wrapper\">\n      <div class=\"restaurant-detail__header\">\n        <h2 class=\"restaurant-detail__title\">".concat(restaurant.name, "</h2>\n        <div class=\"restaurant-detail__info\">\n          <p><i class=\"fa fa-map-marker\"></i> ").concat(restaurant.address, ", ").concat(restaurant.city, "</p>\n          <p><i class=\"fa fa-star\"></i> ").concat(restaurant.rating, "</p>\n        </div>\n      </div>\n          \n      <div class=\"restaurant-detail__image\">\n        <img class=\"lazyload\" data-src=\"").concat(_globals_config__WEBPACK_IMPORTED_MODULE_0__/* ["default"] */ .A.BASE_URL_IMAGE + restaurant.pictureId, "\" alt=\"").concat(restaurant.name, "\">\n      </div>\n\n      <div class=\"restaurant-detail__description\">\n       <h3>About</h3>\n        <p>").concat(restaurant.description, "</p>\n      </div>\n\n      <div class=\"restaurant-detail__menus\">\n        <div class=\"menu-section\">\n        <h3><i class=\"fa fa-cutlery\"></i> Foods</h3>\n        <ul>\n          ").concat(restaurant.menus.foods.map(function (food) {
     return "\n            <li>".concat(food.name, "</li>\n          ");
   }).join(''), "\n        </ul>\n      </div>\n\n      <div class=\"menu-section\">\n        <h3><i class=\"fa fa-glass\"></i> Drinks</h3>\n        <ul>\n          ").concat(restaurant.menus.drinks.map(function (drink) {
     return "\n           <li>".concat(drink.name, "</li>\n          ");
@@ -392,4 +381,4 @@ var createSkeletonRestaurantTemplate = function createSkeletonRestaurantTemplate
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=app~e4317507.cd6b31f75b0b3d10cd7b.bundle.js.map
+//# sourceMappingURL=app~e4317507.b36b890c099af9f1cd89.bundle.js.map
