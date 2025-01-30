@@ -41,7 +41,7 @@ Scenario('unliking one restaurant', async ({ I }) => {
   I.amOnPage('/');
   I.waitForElement('.restaurant-item', 10);
   I.seeElement('.restaurant-item');
-  I.click(locate('.restaurant-item').first());
+  I.click(locate('.restaurant-item a').first());
 
   I.waitForElement('#likeButton', 10);
   I.seeElement('#likeButton');
@@ -51,7 +51,7 @@ Scenario('unliking one restaurant', async ({ I }) => {
   I.amOnPage('/#/favorite');
   I.waitForElement('.restaurant-item', 10);
   I.seeElement('.restaurant-item');
-  I.click(locate('.restaurant-item').first());
+  I.click(locate('.restaurant-item a').first());
 
   I.waitForElement('#likeButton', 10);
   I.seeElement('#likeButton');
@@ -75,7 +75,7 @@ Scenario('searching restaurants', async ({ I }) => {
     const restaurantName = locate('.restaurant-item__name').at(i);
     titles.push(await I.grabTextFrom(restaurantName));
 
-    I.click(locate('.restaurant-item').at(i));
+    I.click(locate('.restaurant-item a').at(i));
     I.waitForElement('#likeButton', 10);
     I.click('#likeButton');
     I.amOnPage('/');
@@ -119,7 +119,7 @@ Scenario('searching restaurants with empty query', async ({ I }) => {
   I.waitForElement('.restaurant-item', 10);
 
   // Like first restaurant
-  I.click(locate('.restaurant-item').first());
+  I.click(locate('.restaurant-item a').first());
   I.waitForElement('#likeButton', 10);
   I.click('#likeButton');
 
@@ -142,7 +142,7 @@ Scenario('searching restaurants with non-existent name', async ({ I }) => {
   // Like a restaurant first
   I.amOnPage('/');
   I.waitForElement('.restaurant-item', 10);
-  I.click(locate('.restaurant-item').first());
+  I.click(locate('.restaurant-item a').first());
   I.waitForElement('#likeButton', 10);
   I.click('#likeButton');
 
